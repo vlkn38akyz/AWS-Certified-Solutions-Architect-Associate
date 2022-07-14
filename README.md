@@ -38,3 +38,25 @@ Amazon Route 53 basamaklı hataları nasıl önler Basamaklı hatalara karşı i
 
 Benzer şekilde, bir uygulama aşırı yüklenirse ve üç uç noktadan biri sistem durumu denetimlerinde başarısız olursa, bu nedenle Route 53 DNS yanıtlarından hariç tutulursa, Route 53 yanıtları kalan iki uç nokta arasında dağıtır. Kalan uç noktalar ek yükü kaldıramaz ve başarısız olurlarsa, Route 53, istekleri üç uç noktaya da dağıtmaya geri döner.
 Referans: https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/dns-failover-types.html https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/dns-failover-problems .htmlTest
+
+
+
+2- A solutions architect is designing a high performance computing (HPC) workload on Amazon EC2. The EC2 instances need to communicate to each other frequently and require network performance with low latency and high throughput.Which EC2 configuration meets these requirements?
+A. Launch the EC2 instances in a cluster placement group in one Availability Zone
+B. Launch the EC2 instances in a spread placement group in one Availability Zone
+C. Launch the EC2 instances in an Auto Scaling group in two Regions and peer the VPCs
+D. Launch the EC2 instances in an Auto Scaling group spanning multiple Availability Zones
+
+Keywords: - each other frequently and require network performance with low latency and high throughput.
+          - cluster placement
+
+Explanation:
+Placement groups
+When you launch a new EC2 instance, the EC2 service attempts to place the instance in such a way that all of your instances are spread out across underlying hardware to minimize correlated failures.You can use placement groups to influence the placement of a group of interdependent instances to meet the needs of your workload. Depending on the type of workload.
+Cluster – packs instances close together inside an Availability Zone. This strategy enables workloads to achieve the low-latency network performance necessary for tightly-coupled node-to-node communication that is typical of HPC applications.
+
+Açıklama:
+Yerleşim grupları
+Yeni bir EC2 bulut sunucusu başlattığınızda, EC2 hizmeti, bulut sunucusunu, ilişkili arızaları en aza indirmek için tüm bulut sunucularınız temel donanıma yayılacak şekilde yerleştirmeye çalışır. Birbirine bağlı bir grubun yerleşimini etkilemek için yerleştirme gruplarını kullanabilirsiniz. iş yükünüzün ihtiyaçlarını karşılayacak örnekler. İş yükünün türüne bağlı olarak.
+Küme – örnekleri bir Erişilebilirlik Alanı içinde birbirine yakın paketler. Bu strateji, iş yüklerinin, HPC uygulamalarında tipik olan, sıkı bir şekilde bağlanmış düğümden düğüme iletişim için gerekli olan düşük gecikmeli ağ performansını elde etmesini sağlar.
+
