@@ -42,9 +42,13 @@ Referans: https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/dns-failover
 
 
 2- A solutions architect is designing a high performance computing (HPC) workload on Amazon EC2. The EC2 instances need to communicate to each other frequently and require network performance with low latency and high throughput.Which EC2 configuration meets these requirements?
+
 A. Launch the EC2 instances in a cluster placement group in one Availability Zone
+
 B. Launch the EC2 instances in a spread placement group in one Availability Zone
+
 C. Launch the EC2 instances in an Auto Scaling group in two Regions and peer the VPCs
+
 D. Launch the EC2 instances in an Auto Scaling group spanning multiple Availability Zones
 
 Keywords: - each other frequently and require network performance with low latency and high throughput.
