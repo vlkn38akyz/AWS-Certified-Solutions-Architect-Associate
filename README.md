@@ -230,3 +230,31 @@ b-Creating AWS Lambda functions that will be triggered by single-button click to
 C-Using AWS Quick Starts to identify and provision the appropriate AWS CloudFormation templates
 
 d-Making use of the AWS Serverless Application Repository to identify and deploy the resources needed for a web and mobile application development environment
+
+
+16-Your company is planning on moving to the AWS Cloud. Once the movement to the Cloud is complete, they want to ensure that the right security settings are put in place. Which of the below tools can assist from a Security compliance. Choose 2 answers from the options given below.
+
+A-AWS Inspector
+
+B-AWS Trusted Advisor
+
+c-AWS Support
+
+d-AWS Kinesis
+
+AWS Inspector
+Geniş ölçekte otomatik ve sürekli güvenlik açığı yönetimi
+Güvenlik açığı bulgularını otomatik olarak keşfedin ve hemen harekete geçebilmeleri için neredeyse gerçek zamanlı olarak uygun ekiplere hızlı bir şekilde yönlendirin.
+Güvenlik açığı bulunan kaynakları önceliklendirmenize ve ele almanıza yardımcı olan bağlama dayalı risk puanları oluşturmak için ağ erişilebilirliği gibi faktörlerle birlikte güncel ortak güvenlik açıkları ve riskler (CVE) bilgilerini kullanın.
+Amazon Inspector taramalarıyla NIST CSF, PCI DSS ve diğer düzenlemeler için uyumluluk gereksinimlerini ve en iyi uygulamaları destekleyin.
+Güvenlik açıklarının ve saldırıya açık durumların kısa bir listesini almak için EC2 bulut sunucularında Amazon Inspector hizmetini düzenli olarak çalıştırın.
+
+17-Which of the following service is most useful when a Disaster Recovery method is triggered in AWS?
+
+A-Amazon Route 53
+
+b-Amazon SNS
+
+c-Amazon SQS
+
+d-Amazon Inspector
