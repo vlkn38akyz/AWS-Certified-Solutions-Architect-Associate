@@ -101,3 +101,132 @@ d-AWS Auto-scaling
 
 AWS OpsWorks, Chef ve Puppet'ın yönetilen bulut sunucularını sağlayan bir yapılandırma yönetimi hizmetidir. Chef ve Puppet, sunucularınızın yapılandırmalarını otomatikleştirmek için kod kullanmanızı sağlayan otomasyon platformlarıdır. OpsWorks, Chef ve Puppet'ı kullanarak sunucularınızın Amazon EC2 bulut sunucularınızda veya şirket içi bilişim ortamlarınızda yapılandırma, dağıtım ve yönetim biçimini otomatikleştirmenizi sağlar.
 
+6-Which of the following statements best describe the AWS Personal Health Dashboard? (Select Two)
+
+a-A concise representation of the general status of AWS services 
+
+b-User-specific view on the availability and performance of AWS services, underlying their AWS resources.
+
+c-A service that prompts the user with alerts and notifications on AWS scheduled activities, pending issues, and planned changes.
+
+d-A minute-by-minute update of system outages and service errors on the AWS global infrastructure
+
+e-A rolling log of all service interruptions across the AWS network and records of incidents persistent for a year
+
+alerts-re
+
+AWS Health Dashboard, AWS hizmetlerinin kullanılabilirliği ve işlemleri hakkında bilgi edinebileceğiniz tek yerdir. AWS hizmetlerinin genel durumunu görüntüleyebilir ve belirli AWS hesabınız veya kuruluşunuzla ilgili kişiselleştirilmiş iletişimleri görüntülemek için oturum açabilirsiniz. Hesap görünümünüz, kaynak sorunları, yaklaşan değişiklikler ve önemli bildirimler hakkında daha derin bir görünürlük sağlar.
+
+The AWS Health Dashboard is the single place to learn about the availability and operations of AWS services. You can view the overall status of AWS services, and you can sign in to view personalized communications about your particular AWS account or organization. Your account view provides deeper visibility into resource issues, upcoming changes, and important notifications.
+Personalized view of service health
+Proactive notifications
+Detailed troubleshooting guidance
+Integration and automation
+Fine-grained access control by using IAM
+Aggregate health events across AWS Organizations
+
+
+7-During an organization’s information systems audit, the administrator is requested to provide a dossier of security and compliance reports as well as online service agreements that exist between the organization and AWS. Which service can they utilize to acquire this information?
+
+a-AWS Artifact
+
+b-AWS Resource Center
+
+c-AWS Service Catalog
+
+d-AWS Directory Service
+
+dossier of security
+compliance reports
+agreements that exist between the organization and AWS
+
+AWS Artifact, sizin için önemli olan uyumlulukla ilgili bilgiler için gideceğiniz merkezi kaynağınızdır. AWS'nin güvenlik ve uyumluluk raporları ile bazı çevrimiçi anlaşmalara isteğe bağlı erişim sunar. AWS Artifact'te yer alan raporlar Hizmet Kuruluşu Denetimi (SOC) raporları, Payment Card Industry (PCI) raporları ve AWS güvenlik denetimlerinin uygulama ve işletme etkililiğini doğrulayan coğrafyalar ve uyumluluk dikey öğelerinde akreditasyon kuruluşlarından alınan sertifikaları içerir. AWS Artifact'te yer alan anlaşmalar İş Ortağı Eki'ni (BAA) ve Gizlilik Anlaşması'nı (NDA) içerir.
+
+8-A web administrator maintains several public and private web-based resources for an organisation. Which service can they use to keep track of the expiry dates of SSL/TLS certificates as well as updating and renewal?
+
+a-AWS Data Lifecycle Manager
+
+b-AWS License Manager
+
+c-AWS Firewall Manager
+
+d-AWS Certificate Manager
+
+SSL/TLS certificates
+load Balancing
+
+AWS Certificate Manager, AWS hizmetleriyle ve dahili bağlantılı kaynaklarınızla kullanmak üzere genel ve özel Güvenli Yuva Katmanı/Aktarım Katmanı Güvenliği (SSL/TLS) sertifikalarını kolayca tedarik etmenize, yönetmenize ve dağıtmanıza olanak sağlayan bir hizmettir. SSL/TLS sertifikaları, ağ iletişimlerinin güvenliğini sağlamak ve özel ağlar üzerindeki kaynakların yanı sıra İnternet üzerinden web sitelerinin kimliğini oluşturmak için de kullanılır. AWS Certificate Manager, kullanıcının kendisinin yaptığı zaman alıcı SSL/TLS sertifikası satın alma, karşıya yükleme ve yenileme işlemlerini ortadan kaldırır.
+
+AWS Certificate Manager ile hızlı şekilde bir sertifika isteyip Elastic Load Balancing, Amazon CloudFront dağıtımları ve Amazon API Gateway üzerindeki API'ler gibi, ACM ile entegre AWS kaynaklarında sertifikayı dağıtabilir ve AWS Certificate Manager'ın sertifika yenileme işlemlerini gerçekleştirmesini sağlayabilirsiniz. Aynı zamanda, dahili kaynaklarınız için özel sertifikalar oluşturmanıza ve sertifika yaşam döngüsünü merkezi olarak yönetmenize olanak sağlar. ACM ile entegre hizmetlerle kullanım için AWS Certificate Manager aracılığıyla tedarik edilen genel ve özel sertifikalar ücretsizdir. Yalnızca uygulamanızı çalıştırmak amacıyla oluşturduğunuz AWS kaynakları için ödeme yaparsınız. AWS Certificate Manager Private Certificate Authority'de, özel sertifika yetkilisinin operasyonu ve düzenlediğiniz özel sertifikalar için aylık ödeme yaparsınız.
+
+9-One of a blogger’s articles has gone viral which has resulted in a lot of traffic to their blog. This excessive amount of traffic has in turn caused poor browsing experience for some readers. How can normal service to the blog be restored?
+
+a-Set up a Web Application Firewall (WAF) that will allow legitimate traffic and deny maliciously generated traffic.
+
+B-Set up Read replicas of the backend RDS instance where the article resides
+
+c-Upgrade the backend RDS instance to a non-relational database
+
+d-Configure Multi-AZ to enhance the performance of the backend RDS instances running the blog
+
+10-In Cost Optimization, what is referred to as EC2 Right Sizing?
+
+a-It is a cost-effective solution to determine the appropriate Amazon EC2 resources such as memory, processor type and storage when provisioning an instance type
+
+B-It is a cost-saving solution that analyses data over a period of time to determine and recommend the type of Amazon EC2 instances appropriate for your workload
+
+c-It is the scaling down or scaling up of Amazon EC2 instances and instance types to meet workload demand by maintaining only the threshold resources
+
+d-It is a cost-saving solution that outlines the recommendations of best practice in four aspects namely cost optimization, performance, fault-tolerance and service limits
+
+11-Which AWS service gives the user the ability to group AWS resources across different AWS Regions by application and then collectively view their operational data for monitoring purposes?
+
+A-Systems Manager
+
+b-Management Console
+
+c-Resource Groups
+
+d-Resource Access Manager (AWS RAM)
+
+12-Which of the following is an accurate statement regarding AWS resource tags? (Select TWO.)
+
+a-All AWS resource tags have a semantic interpretation
+
+B-Within a resource tag, every defined key must have a value string
+
+c-By default, resource tags are assigned as null, null
+
+D-Resource tags can be edited or removed at any time E. Placement groups support tags
+
+e-Placement groups support tags
+
+13-What can be termed as a user-defined label that has a key-value pair of variable character length. It is assigned to AWS resources as metadata for administration and management purposes?
+
+A-Resource Tag
+
+b-Resource Group
+
+d-Resource Flag
+
+e-Tag key
+
+14-Choose the disaster recovery deployment mechanism that has the lowest downtime.
+
+a-Pilot light
+
+B-Warm standby
+
+c-Backup Restore
+
+d-Devops
+
+15- A start-up organisation would like to instantaneously deploy a complex web and mobile application development environment, complete with the necessary resources and peripheral assets. How can this be achieved efficiently?
+
+a-By putting together the necessary components from AWS services, starting with EC2 instances
+
+b-Creating AWS Lambda functions that will be triggered by single-button click to call the appropriate API of the respective resources and peripheral assets needed
+
+C-Using AWS Quick Starts to identify and provision the appropriate AWS CloudFormation templates
+
+d-Making use of the AWS Serverless Application Repository to identify and deploy the resources needed for a web and mobile application development environment
