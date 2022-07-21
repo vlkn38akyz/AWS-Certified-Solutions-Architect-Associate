@@ -64,3 +64,40 @@ Yerleşim grupları
 Yeni bir EC2 bulut sunucusu başlattığınızda, EC2 hizmeti, bulut sunucusunu, ilişkili arızaları en aza indirmek için tüm bulut sunucularınız temel donanıma yayılacak şekilde yerleştirmeye çalışır. Birbirine bağlı bir grubun yerleşimini etkilemek için yerleştirme gruplarını kullanabilirsiniz. iş yükünüzün ihtiyaçlarını karşılayacak örnekler. İş yükünün türüne bağlı olarak.
 Küme – örnekleri bir Erişilebilirlik Alanı içinde birbirine yakın paketler. Bu strateji, iş yüklerinin, HPC uygulamalarında tipik olan, sıkı bir şekilde bağlanmış düğümden düğüme iletişim için gerekli olan düşük gecikmeli ağ performansını elde etmesini sağlar.
 
+3-  An administrator would like to automate the creation of new AWS accounts for the research and development department of the organisation where new workloads need to be spun-up promptly and categorized into groups. How can this be achieved efficiently?
+
+
+a-Use of AWS CloudFormation would be sufficient
+
+b-Use of AWS Organisations
+
+c-Using the AWS API to programmatically create each account via command line interface
+
+d-AWS Identity Access Management (IAM)
+
+AWS Organizations, büyümeyle birlikte ortamlarınızı merkezi olarak yönetmenize ve idare etmenize ve AWS kaynaklarınızı ölçeklendirmenize yardımcı olur. AWS Organizations’ı kullanarak programlama yoluyla yeni AWS hesapları oluşturabilir ve kaynak ayırabilir, iş akışlarınızı düzenlemek için hesapları gruplandırabilir, yönetim amacıyla hesaplara veya gruplara politikalar uygulayabilir ve tüm hesaplarınız için tek bir ödeme yöntemi kullanarak faturalamayı basitleştirebilirsiniz.
+
+Ayrıca, AWS Organizations diğer AWS hizmetleriyle entegredir, bu nedenle merkezi yapılandırmaları, güvenlik mekanizmalarını, denetim gerekliliklerini ve kuruluşunuzda yer alan hesaplar arasındaki kaynak paylaşımını tanımlayabilirsiniz. AWS Organizations, herhangi bir ek ücret olmadan tüm AWS müşterileri tarafından kullanılabilir.
+
+4-  An organisation utilizes a software suite that consists of a multitude of underlying microservices hosted on the cloud. The application is frequently giving runtime errors. Which service will help in the troubleshooting process?
+a-AWS CloudTrail
+
+b-AWS CloudWatch
+
+c-AWS X-Ray
+
+d-Amazon Elasticsearch Service
+
+AWS X-Ray, yazılım geliştiricilerin üretimi ve dağıtılmış uygulamaları (ör. mikro hizmetler mimarisi kullanılarak oluşturulanlar) analiz edip bunların hatalarını ayıklamasına yardımcı olur. X-Ray ile, performans sorunlarının ve hataların kök nedenini belirlemek ve sorunlarını gidermek için uygulamanızın ve temel hizmetlerinin nasıl performans gösterdiğini anlayabilirsiniz. X-Ray, uygulamanızdan geçen isteklerin uçtan uca görünümünü sunar ve uygulamalarınızın temel bileşenlerinin bir haritasını gösterir. X-Ray’i kullanarak üç katmanlı basit uygulamalardan binlerce hizmet içeren karmaşık mikro hizmet uygulamalarına kadar birçok uygulamayı hem geliştirme hem de üretim aşamasında analiz edebilirsiniz.
+
+5-An administrator would like to efficiently automate the replication and deployment of a specific software configuration existent on one EC2 instance onto four hundred others. Which AWS service is BEST suited for this implementation?
+a-AWS OpsWorks
+
+b-AWS Beanstalk
+
+c-AWS Launch Configuration
+
+d-AWS Auto-scaling
+
+AWS OpsWorks, Chef ve Puppet'ın yönetilen bulut sunucularını sağlayan bir yapılandırma yönetimi hizmetidir. Chef ve Puppet, sunucularınızın yapılandırmalarını otomatikleştirmek için kod kullanmanızı sağlayan otomasyon platformlarıdır. OpsWorks, Chef ve Puppet'ı kullanarak sunucularınızın Amazon EC2 bulut sunucularınızda veya şirket içi bilişim ortamlarınızda yapılandırma, dağıtım ve yönetim biçimini otomatikleştirmenizi sağlar.
+
