@@ -193,3 +193,114 @@ c-Store data on Amazon EFS storage.
 d-Store data on EC2 instance storage.
 
 Sürüm oluşturma, paket düzeyindedir ve bir nesnenin önceki sürümlerini kurtarmak için kullanılabilir. A seçeneği, dosyaların yanlışlıkla silinmesine karşı koruma sağlamadığından yanlıştır. C seçeneği yanlıştır. Bu ideal bir çözüm değildir çünkü birden çok EC2 bulut sunucusu dosya sistemine erişebilir. D seçeneği geçicidir.
+
+16-. As an AWS solution architect, you are building a new image processing application with queuing service. There is fleet of m4.large EC2 instances which would poll SQS as images are uploaded by users. The image processing takes around 55 seconds for completion, and users are notified via emails on completion. During the trial period, you find duplicate messages being generated due to which users are getting multiple emails for the same image. What would be the best option to eliminate duplicate messages before going to production?
+
+a-Create delay queue for 60 seconds.
+
+B-Increase visibility timeout to 60 seconds.
+
+c-Create delay queue to greater than 60 seconds.
+
+d-Decrease visibility timeout below 60 seconds.
+
+Varsayılan görünürlük zaman aşımı 30 saniyedir. Uygulamanın işlemi tamamlamak için 60 saniyeye ihtiyacı olduğundan, görünürlük zaman aşımı 60 saniyeye çıkarılmalıdır. Bu, mesajı 60 saniye boyunca diğer tüketicilerden gizler, böylece orijinal tüketici tarafından işlemde olan aynı dosyayı işlemezler. A ve C seçenekleri yanlıştır, çünkü Gecikme kuyrukları yeni mesajların bir kuyruğa teslimini ertelemenize izin verir. birkaç saniye için. 60 saniye veya daha uzun bir gecikme kuyruğu oluşturmak, yeni mesajın teslimini belirli saniyeler kadar geciktirir ve yinelenen mesajı ortadan kaldırmaz. Görünürlük zaman aşımı mesajın işlenmesi ve silinmesi için gereken maksimum süreye ayarlandığından D seçeneği yanlıştır. kuyruk. Görünürlük zaman aşımı 60 saniyenin altına ayarlanırsa, orijinal tüketici zaten üzerinde çalışırken mesaj diğer tüketicilere tekrar görünür olacak ve yeni mesajın teslimini belirli saniyeler kadar geciktirecek ve yinelenen mesajı ortadan kaldırmayacaktır.
+
+17- A company has a media processing application deployed in a local data center. Its file storage is built on a Microsoft Windows file server. The application and file server need to be migrated to AWS. You want to quickly set up the file server in AWS and the application code should continue working to access the file systems. Which method should you choose to create the file server?
+
+a-Create a Windows File Server from Amazon WorkSpaces.
+
+b-Configure a high performance Windows File System in Amazon EFS.
+
+C-Create a Windows File Server in Amazon FSx.
+
+d-Configure a secure enterprise storage through Amazon WorkDocs.
+
+ In this question, a Windows file server is required in AWS and the application should continue to work unchanged. Amazon FSx for Windows File Server is the correct answer as it is backed by a fully native Windows file system. Option​ ​A ​is​ ​incorrect:​ Because Amazon WorkSpace configures a desktop server which is not required in this question. Only a Windows file server is needed. Option​ ​B ​is​ ​incorrect:​ Because EFS can not be used to configure a Windows file server. Option​ ​C ​is​ CORRECT:​ Because Amazon FSx provides fully managed Microsoft Windows file servers.Option​ ​D ​is​ ​incorrect:​ Because Amazon WorkDocs is a file sharing service in AWS. It cannot provide a native Windows file system.
+ 
+ 18-There is a requirement to get the source IP addresses that access resources in a private subnet. Which of the following could be used to fulfill this purpose?
+
+Trusted Advisor
+
+B-VPC Flow Logs
+
+Use CloudWatch metrics
+
+Use CloudTrail
+
+990 / 5.000
+Çeviri sonuçları
+AWS Belgeleri aşağıdakilerden bahseder: VPC Akış Günlükleri, VPC'nizdeki ağ arabirimlerine giden ve giden IP trafiği hakkında bilgi yakalamanızı sağlayan bir özelliktir. Akış günlüğü verileri, Amazon CloudWatch Günlükleri kullanılarak depolanır. Bir akış günlüğü oluşturduktan sonra, verilerini Amazon CloudWatch Logs'ta görüntüleyebilir ve alabilirsiniz. AWS Trusted Advisor, özelleştirilmiş bulut uzmanınız olduğundan A seçeneği yanlıştır! AWS ortamınızı paradan tasarruf etmek, sistem performansını ve güvenilirliğini artırmak ve güvenlik açıklarını kapatmak amacıyla inceleyerek AWS kullanımına yönelik en iyi uygulamaları gözlemlemenize yardımcı olur. AWS CloudTrail, AWS hesabınız için yönetişim, uyumluluk, operasyonel denetim ve risk denetimi sağlayan bir hizmettir. CloudTrail ile AWS altyapınızdaki eylemlerle ilgili hesap etkinliğini günlüğe kaydedebilir, sürekli olarak izleyebilir ve saklayabilirsiniz. CloudWatch Metric, esas olarak performans ölçümleri için kullanılır.
+Soru başlığı
+
+18-Your team is developing a high performance computing (HPC) application. The application resolves complex, compute-intensive problems and needs a high-performance and low-latency Lustre file system. You need to configure this file system in AWS at low cost. Which method is the most suitable?
+
+a-Create a Lustre file system through Amazon FSx.
+
+Launch a high performance Lustre file system in Amazon EBS.
+
+Create a high-speed volume cluster in EC2 placement group.
+
+Launch the Lustre file system from AWS Marketplace.
+
+Lustre dosya sistemi, HPC uygulamaları için kullanılabilen açık kaynaklı, paralel bir dosya sistemidir. Tanıtımı için http://lustre.org/ adresine bakın. Amazon FSx'te kullanıcılar, düşük maliyetle bir Lustre dosya sistemini hızla başlatabilir. A Seçeneği DOĞRU: Amazon FSx, Lustre dosya sistemlerini destekler ve kullanıcılar yalnızca kullandıkları kaynaklar için ödeme yapar. B Seçeneği yanlıştır: Kullanıcılar Lustre dosya sistemini EBS aracılığıyla yapılandırabilse de, birçok ekstra yapılandırmaya ihtiyaç duyar, Seçenek A daha basittir. Seçenek C yanlıştır: Çünkü EC2 yerleştirme grubu bir Lustre dosya sistemini desteklemez. D Seçeneği yanlıştır: Çünkü AWS Marketplace'teki ürünler uygun maliyetli değildir. Amazon FSx için minimum ücret veya kurulum ücreti yoktur.
+
+19-A company is using a Redshift cluster to store their data warehouse. There is a requirement from the Internal IT Security team to encrypt data in the Redshift database. How could this be achieved? (SELECT TWO)
+
+Encrypt the EBS volumes of the underlying EC2 Instances.
+
+B-Use AWS KMS Customer Default master key.
+
+Use SSL/TLS for encrypting the data.
+
+D-Use hardware security module (HSM) to manage the top-level encryption keys.
+
+AWS belgeleri aşağıdakilerden bahseder: Amazon Redshift, veritabanını şifrelemek için bir şifreleme anahtarları hiyerarşisi kullanır. Bu hiyerarşideki en üst düzey şifreleme anahtarlarını yönetmek için AWS Key Management Service (AWS KMS) veya bir donanım güvenlik modülü (HSM) kullanabilirsiniz. Amazon Redshift'in şifreleme için kullandığı süreç, anahtarları nasıl yönettiğinize bağlı olarak farklılık gösterir. D Seçeneği doğrudur. AWS artık AWS KMS ile birlikte Amazon S3'ün sunucu tarafı şifreleme özelliklerini kullanarak Redshift verilerinin uçtan uca şifrelemesini destekliyor.
+
+20-You are developing an application using AWS SDK to get objects from AWS S3. The objects have big sizes and sometimes there are failures when getting objects especially when the network connectivity is poor. You want to get a specific range of bytes in a single GET request and retrieve the whole object in parts. Which method can achieve this?
+
+Enable multipart upload in the AWS SDK.
+
+B-Use the “Range” HTTP header in a GET request to download the specified range bytes of an object.
+
+Reduce the retry requests and enlarge the retry timeouts through AWS SDK when fetching S3 objects.
+
+Retrieve the whole S3 object through a single GET operation.
+
+HTTP GET isteğindeki “Range” başlığı aracılığıyla, tüm nesneler yerine nesnelerin belirli bir kısmı indirilebilir. Seçenek A ​yanlış: Çünkü soru çok parçalı yükleme yerine çok parçalı indirme istiyor. Seçenek B ​DOĞRU: Çünkü bayt aralığı getirmeleriyle, kullanıcılar aynı nesneden farklı parçalar getirmek için Amazon S3 ile eşzamanlı bağlantılar kurabilir. Seçenek C yanlıştır: Çünkü yeniden deneme isteklerini ve zaman aşımlarını ayarlamak bir nesnenin belirli bölümlerini indiremez. D Seçeneği yanlıştır: Çünkü tüm nesneyi alma yöntemi gereksinimi karşılamıyor.
+
+21-An application hosted on EC2 Instances has its promotional campaign due, to start in 2 weeks. There is a mandate from the management to ensure that no performance problems are encountered due to traffic growth during this time. What should be done to the Auto Scaling Group to fulfill this requirement?
+
+Configure Step scaling for the Auto Scaling Group.
+
+B-Configure Dynamic Scaling and use Target tracking scaling Policy.
+
+Configure Scheduled scaling for the Auto Scaling Group.
+
+Configure Static scaling for the Auto Scaling Group.
+
+Açıklama: Otomatik Ölçeklendirme grubundaki örnek sayısıyla orantılı olarak artan veya azalan bir kullanım metriği olan bir metriğe dayalı olarak ölçeklendirme yapıyorsanız, bunun yerine bir hedef izleme ölçeklendirme ilkesi kullanmanızı öneririz. Hedef izleme ölçeklendirme ilkelerinde, önceden tanımlanmış bir metrik seçer veya özelleştirilmiş bir metrik yapılandırır ve bir hedef değer belirlersiniz. EC2 Auto Scaling, ölçeklendirme politikasını tetikleyen CloudWatch alarmlarını oluşturur ve yönetir ve metrik ve hedef değere dayalı olarak ölçeklendirme ayarını hesaplar. Ölçeklendirme ilkesi, ölçümü belirtilen hedef değerde veya buna yakın tutmak için gereken kapasiteyi ekler veya kaldırır. Zamanlanmış ölçekleme, yük değişikliklerini tahmin edebildiğinizde ve ayrıca ne kadar süre çalıştırmanız gerektiğini bildiğinizde daha iyi çalışır. Buradaki senaryomuzda, kampanya döneminde (dönem belirtilmemiş) yoğun trafik olacağını biliyoruz, ancak gerçek trafikten emin değiliz. Bunu tahmin edecek bir geçmişimiz de yok.
+
+22-A company has an application hosted in AWS. This application consists of EC2 Instances which sit behind an ELB. The following are the requirements from an administrative perspective: a) Ensure notifications are sent when the read requests go beyond 1000 requests per minute b) Ensure notifications are sent when the latency goes beyond 10 seconds c) Monitor all API request activities on the AWS resources Which of the followings can be used to satisfy these requirements? (SELECT TWO)
+
+A-Use CloudTrail to monitor the API Activity.
+
+Use CloudWatch logs to monitor the API Activity.
+
+C-Use CloudWatch metrics for the metrics that need to be monitored as per the requirement and set up an alarm activity to send out notifications when the metric reaches the set threshold limit.
+
+Use custom log software to monitor the latency and read requests to the ELB.
+
+Açıklama: AWS CloudTrail, API çağrılarını izlemek için kullanılabilir. Bir ELB için CloudWatch ölçümlerini kullandığınızda, okuma isteklerinin sayısını ve gecikmeyi kutudan çıkarabilirsiniz. A seçeneği doğrudur. CloudTrail, AWS hesabınızdaki tüm kaynaklar için API çağrılarını kaydeden ve günlük dosyalarını bir Amazon S3 klasörüne teslim eden bir web hizmetidir. Kaydedilen bilgiler, kullanıcının kimliğini, AWS API çağrısının başlangıç zamanını, kaynak IP adresini, istek parametrelerini ve hizmet tarafından döndürülen yanıt öğelerini içerir. C seçeneği doğrudur. İhtiyaca göre izlenmesi gereken metrikler için Cloudwatch metriklerini kullanın ve metrik belirlenen eşik sınırına ulaştığında bildirim göndermek için bir alarm etkinliği ayarlayın.
+
+23-A company has resources hosted in their AWS Account. There is a requirement to monitor API activity for all regions and the audit needs to be applied for future regions as well. What would fulfill this requirement?
+
+a-Ensure CloudTrail for each region, then enable trail for each future region.
+
+B-Ensure one CloudTrail trail is enabled for all regions.
+
+c-Create a CloudTrail for each region. Use CloudFormation to enable the trail for all future regions.
+
+d-Create a CloudTrail for each region. Use AWS Config to enable the trail for all future regions.
+
+AWS Documentation aşağıdakilerden bahseder: Artık AWS hesabınız için tüm bölgelerde bir iz açabilirsiniz. CloudTrail, tüm bölgelerden günlük dosyalarını Amazon S3 klasörüne ve belirttiğiniz isteğe bağlı bir CloudWatch Logs günlük grubuna gönderir. Ayrıca, AWS yeni bir bölge başlattığında CloudTrail, yeni bölgede aynı izi oluşturacaktır. Sonuç olarak, herhangi bir işlem yapmadan yeni bölge için API etkinliği içeren günlük dosyaları alacaksınız.
