@@ -233,7 +233,7 @@ Use CloudTrail
 AWS Belgeleri aşağıdakilerden bahseder: VPC Akış Günlükleri, VPC'nizdeki ağ arabirimlerine giden ve giden IP trafiği hakkında bilgi yakalamanızı sağlayan bir özelliktir. Akış günlüğü verileri, Amazon CloudWatch Günlükleri kullanılarak depolanır. Bir akış günlüğü oluşturduktan sonra, verilerini Amazon CloudWatch Logs'ta görüntüleyebilir ve alabilirsiniz. AWS Trusted Advisor, özelleştirilmiş bulut uzmanınız olduğundan A seçeneği yanlıştır! AWS ortamınızı paradan tasarruf etmek, sistem performansını ve güvenilirliğini artırmak ve güvenlik açıklarını kapatmak amacıyla inceleyerek AWS kullanımına yönelik en iyi uygulamaları gözlemlemenize yardımcı olur. AWS CloudTrail, AWS hesabınız için yönetişim, uyumluluk, operasyonel denetim ve risk denetimi sağlayan bir hizmettir. CloudTrail ile AWS altyapınızdaki eylemlerle ilgili hesap etkinliğini günlüğe kaydedebilir, sürekli olarak izleyebilir ve saklayabilirsiniz. CloudWatch Metric, esas olarak performans ölçümleri için kullanılır.
 Soru başlığı
 
-18-Your team is developing a high performance computing (HPC) application. The application resolves complex, compute-intensive problems and needs a high-performance and low-latency Lustre file system. You need to configure this file system in AWS at low cost. Which method is the most suitable?
+19-Your team is developing a high performance computing (HPC) application. The application resolves complex, compute-intensive problems and needs a high-performance and low-latency Lustre file system. You need to configure this file system in AWS at low cost. Which method is the most suitable?
 
 a-Create a Lustre file system through Amazon FSx.
 
@@ -304,3 +304,88 @@ c-Create a CloudTrail for each region. Use CloudFormation to enable the trail fo
 d-Create a CloudTrail for each region. Use AWS Config to enable the trail for all future regions.
 
 AWS Documentation aşağıdakilerden bahseder: Artık AWS hesabınız için tüm bölgelerde bir iz açabilirsiniz. CloudTrail, tüm bölgelerden günlük dosyalarını Amazon S3 klasörüne ve belirttiğiniz isteğe bağlı bir CloudWatch Logs günlük grubuna gönderir. Ayrıca, AWS yeni bir bölge başlattığında CloudTrail, yeni bölgede aynı izi oluşturacaktır. Sonuç olarak, herhangi bir işlem yapmadan yeni bölge için API etkinliği içeren günlük dosyaları alacaksınız.
+
+24- An application hosted in AWS allows users to upload videos to an S3 bucket. A user is required to be given access to upload some videos for a week based on the profile. How could this be accomplished in the best way possible?
+
+a-Create an IAM bucket policy to provide access for one week.
+
+b-Create a pre-signed URL for each profile which will last for one week.
+
+c-Create an S3 bucket policy to provide access for one week.
+
+d-Create an IAM role to provide access for one week.
+
+Kullanıcılara S3 paketleri için geçici erişim vermek istediğinizde, önceden imzalanmış URL'ler mükemmel çözümdür. Bu nedenle, yeni bir profil oluşturulduğunda, URL'nin bir hafta sürmesini sağlamak ve kullanıcıların gerekli nesneleri yüklemesine izin vermek için önceden imzalanmış bir URL oluşturabilirsiniz. D Seçeneği için, IAM Rol Oturumu için ayarlayabileceğiniz maksimum süre 12 saattir, dolayısıyla bu 1 haftalık gereksinimi karşılamaz.
+
+25-To improve the network performance, you launch a C5 EC2 Amazon Linux instance and enable enhanced networking by modifying the instance attribute with “aws ec2 modify-instance-attribute --instance-id instance_id --ena-support”. Which mechanism does the EC2 instance use to enhance the networking capabilities?
+
+a-Intel 82599 Virtual Function (VF) interface.
+
+b-Elastic Fabric Adapter (EFA).
+
+c-Elastic Network Adapter (ENA).
+
+d-Elastic Network Interface (ENI).
+
+Açıklama: Gelişmiş ağ iletişimi iki mekanizmaya sahiptir: Elastik Ağ Bağdaştırıcısı (ENA) ve Intel 82599 Sanal İşlev (VF) arabirimi. ENA için kullanıcılar bunu --ena-support ile etkinleştirebilir. Seçenek A ​yanlıştır: Çünkü “--ena-support” seçeneği Intel 82599 Sanal İşlev (VF) arabirimi tarafından kullanılmaz. Seçenek B ​ yanlıştır: Çünkü Elastik Yapı Adaptörü (EFA) gelişmiş ağ iletişimi için kullanılmaz. C Seçeneği DOĞRU: Amazon Linux'ta kullanıcılar, soruda belirtilen AWS CLI komutuyla gelişmiş ağ özelliğini etkinleştirebilir. D Seçeneği yanlıştır: Bu senaryoda, gelişmiş ağ iletişimi için kullanılan mekanizma Elastik Ağ Arayüzü (ENI) yerine Esnek Ağ Bağdaştırıcısı (ENA) olmalıdır.
+
+26-You are creating several EC2 instances for a new application. For a better performance of the application, both low network latency and high network throughput are required for the EC2 instances. All instances should be launched in a single availability zone. How would you configure this?
+
+a-Launch all EC2 instances in a placement group using a Cluster placement strategy.
+
+b-Auto assign a public IP when launching the EC2 instances.
+
+c-Launch EC2 instances in an EC2 placement group and select the Spread placement strategy.
+
+d-When launching the EC2 instances, select an instance type that supports enhanced networking.
+
+Explanation: The Cluster placement strategy helps to achieve a low-latency and high throughput network. Option​ ​A ​is​ CORRECT:​ The Cluster placement strategy can improve the network performance among EC2 instances. The strategy can be selected when creating a placement group. Option​ ​B ​is​ ​incorrect:​ Because the public IP cannot improve the network performance. Option​ ​C ​is​ ​incorrect:​ The Spread placement strategy is recommended when a number of critical instances should be kept separate between each other. This strategy should not be used in this scenario. Option​ ​D ​is​ ​incorrect:​ The description in the option is inaccurate. The correct method is creating a placement group with a suitable placement strategy.
+
+27-A company hosts 5 web servers in AWS. They want to ensure that Route53 can be used to route user traffic to random healthy web servers when they request for the underlying web application. Which routing policy should be used to fulfill this requirement?
+a-Simple
+
+b-Weighted
+
+c-Multivalue Answer with health check
+
+d-Latency
+
+Explanation: If you want to route traffic randomly to multiple resources such as web servers, you can create one multivalue answer record for each resource and, optionally, associate an Amazon Route 53 health check with each record. Simple routing policy – Use a single resource that performs a given function for your domain, for example, a web server that serves content for the example.com website. Latency routing policy – Use when you have resources in multiple locations and you want to route traffic to the resource that provides the best latency. Weighted routing policy – Use to route traffic to multiple resources in proportions that you specify. Multivalue answer routing policy – Use when you want Route53 to respond to DNS queries with up to eight healthy records selected at random.
+
+28-There is a requirement for an iSCSI device and the legacy application needs local storage with low-latency access to all the data. What would you do to meet the demands of the application?
+
+Configure the Simple Storage Service.
+
+Configure Storage Gateway Cached volume.
+
+Configure Storage Gateway Stored volume.
+
+Configure Amazon Glacier.
+
+Explanation: If you need low-latency access to your entire dataset, first configure your on-premises gateway to store all your data locally. Then, asynchronously back up point-in-time snapshots of this data to Amazon S3. This configuration provides durable and inexpensive offsite backups that you can recover to your local data center or Amazon EC2. S3 and Glacier are not used for this purpose. Volume gateway provides an iSCSI target, which enables you to create volumes and mount them as iSCSI devices from your on-premises or EC2 application servers. The volume gateway runs in either a cached or stored mode. In the cached mode, your primary data is written to S3, while retaining your frequently accessed data locally in a cache for low-latency access. In the stored mode, your primary data is stored locally and your entire dataset is available for low-latency access while asynchronously backed up to AWS
+
+29-Your company has an online game application deployed in an Auto Scaling group. The traffic of the application is predictable. Every Friday, the traffic starts to increase, remains high on weekends and then drops on Monday. You need to plan the scaling actions for the Auto Scaling group. Which method is the most suitable for the scaling policy?
+
+Configure a scheduled CloudWatch event rule to launch/ terminate instances at the specified time every week.
+
+Create a predefined target tracking scaling policy based on the average CPU metric and the ASG will scale automatically.
+
+Select the ASG and on the Automatic Scaling tab, add a step scaling policy to automatically scale out/ in at fixed time every week.
+
+Configure a scheduled action in the Auto Scaling group by specifying the recurrence, start/end time, capacities, etc.
+
+A seçeneği yanlıştır:​ Bu seçenek işe yarayabilir. Ancak, ölçeklendirme eylemlerini gerçekleştirmek için Lambda işlevi gibi bir hedef yapılandırmanız gerekir. Seçenek B ​ yanlış:​ Hedef izleme ölçeklendirme ilkesi ASG için bir hedef tanımlar. Ölçeklendirme eylemleri bir zamanlamaya göre gerçekleşmez. Seçenek C ​yanlış: Adım ölçeklendirme ilkesi, ASG'yi belirtilen zamanda ölçeklenecek şekilde yapılandırmaz. D Seçeneği DOĞRU: Zamanlanmış ölçekleme ile, kullanıcılar ASG'nin ölçeklenmesi için bir zamanlama tanımlar. Bu seçenek gereksinimleri karşılayabilir.
+
+Option​ ​A ​is​ ​incorrect:​ This option may work. However you have to configure a target such as a Lambda function to perform the scaling actions. Option​ ​B ​is​ ​incorrect:​ The target tracking scaling policy defines a target for the ASG. The scaling actions do not happen based on a schedule. Option​ ​C ​is​ ​incorrect:​ The step scaling policy does not configure the ASG to scale at specified time. Option​ ​D ​is​ CORRECT:​ With scheduled scaling, users define a schedule for the ASG to scale. This option can meet the requirements.
+
+30-There is an application that consists of EC2 Instances behind classic ELBs. An EC2 proxy is used for content management of the backend instances. The application might not be able to scale properly. What should be used to scale the proxy and backend instances appropriately? (SELECT TWO)
+
+Use Auto Scaling for the proxy servers.
+
+Use Auto Scaling for the backend instances.
+
+Replace the Classic ELB with Application ELB.
+
+Use Application ELB for both the frontend and backend instances.
+
+Explanation: When you see a requirement for scaling, consider the Auto Scaling service provided by AWS. This can be used to scale both the backend instances and the EC2 proxy server.
