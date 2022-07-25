@@ -389,3 +389,39 @@ Replace the Classic ELB with Application ELB.
 Use Application ELB for both the frontend and backend instances.
 
 Explanation: When you see a requirement for scaling, consider the Auto Scaling service provided by AWS. This can be used to scale both the backend instances and the EC2 proxy server.
+
+31-There is a website hosted in AWS that might get a lot of traffic over the next couple of weeks. If the application experiences a natural disaster at this time, what should be used to reduce potential disruption to users?
+
+Use an ELB to divert traffic to an Infrastructure hosted in another region.
+
+Use an ELB to divert traffic to an Infrastructure hosted in another AZ.
+
+Use CloudFormation to create backup resources in another AZ.
+
+Use Route53 to route requests to another instance in a different region.
+
+Bir olağanüstü durum kurtarma senaryosunda, verilen tüm seçenekler arasından en iyi seçenek, trafiği statik bir web sitesine yönlendirmektir. Seçenek A yanlıştır çünkü ELB, trafiği birden çok bölgede değil, yalnızca bir bölgede dengeleyebilir. B ve C seçenekleri yanlıştır çünkü AZ'ler arasında yedekleme kullanmak olağanüstü durum kurtarma amaçları için yeterli değildir. "Sorun durumunda olası kesintiyi azaltmak için" ifadesi bir felaket kurtarma durumuna işaret ediyor. Bu durumu yönetmenin birden fazla yolu vardır. Ancak burada verilen listeden en iyi seçeneği seçmemiz gerekiyor. Bunlardan en uygunu D Seçeneğidir.
+
+32. A database, hosted using the Amazon RDS service, is getting a lot of database queries and has now become a bottleneck for the associating application. Which action would ensure that the database is not a performance bottleneck?
+
+Setup a CloudFront distribution in front of the database.
+
+Setup an ELB in front of the database.
+
+Setup ElastiCache in front of the database.
+
+Setup SNS in front of the database.
+
+ElastiCache, veritabanına karşı verilen ortak sorguları önbelleğe almak için bir veritabanının önünde kullanılabilen bir bellek içi çözümdür. Bu, veritabanındaki genel yükü azaltabilir. A seçeneği yanlıştır çünkü bu normalde içerik dağıtımı için kullanılır. Seçenek B kısmen doğrudur, ancak dahili yük dengeleme çözümü olarak bir veritabanınız daha olması gerekir. SNS basit bir bildirim hizmeti olduğu için D seçeneği yanlıştır.
+
+33- A company has an infrastructure that consists of machines which send log information every 5 minutes. The number of these machines can run into thousands and it is required to ensure that the analysis of every log item is completed within 24 hours. What could be helpful in fulfilling this requirement?
+
+Use Kinesis Data Streams with S3 to take the logs and store them in S3 for processing.
+
+Launch an Elastic Beanstalk application to take the processing job of the logs.
+
+Launch an EC2 instance with enough EBS volumes to consume the logs which can be used for further processing.
+
+Use CloudTrail to store all the logs which can be analyzed at a later stage.
+
+Explanation: AWS Documentation mentions the following: Amazon Kinesis Data Streams (KDS) is a massively scalable and durable real-time data streaming service. KDS can continuously capture gigabytes of data per second from thousands of sources such as website clickstreams, database event streams, financial transactions, social media feeds, IT logs, and location-tracking events. Make your streaming data available to multiple real-time analytics applications, to Amazon S3 or to AWS Lambda within 70 milliseconds of the data being collected.
