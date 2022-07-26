@@ -425,3 +425,294 @@ Launch an EC2 instance with enough EBS volumes to consume the logs which can be 
 Use CloudTrail to store all the logs which can be analyzed at a later stage.
 
 Explanation: AWS Documentation mentions the following: Amazon Kinesis Data Streams (KDS) is a massively scalable and durable real-time data streaming service. KDS can continuously capture gigabytes of data per second from thousands of sources such as website clickstreams, database event streams, financial transactions, social media feeds, IT logs, and location-tracking events. Make your streaming data available to multiple real-time analytics applications, to Amazon S3 or to AWS Lambda within 70 milliseconds of the data being collected.
+
+34-A company is planning to build a 2-tier architecture with a web server and a database server with separate environments for development and testing. The architecture will be hosted on EC2 Instances accordingly, and database server would require less than 16,000 IOPS per volume. Which of the following EBS volumes are optimum for the underlying EC2 Instances? (Select Two)
+
+General Purpose SSD for the web server
+
+Provisioned IOPS for the web server
+
+General Purpose SSD for the database server
+
+Provisioned IOPS for the database server
+
+Explanation : The General Purpose SSD would be suitable for development and test environments and the IOPS SSD for business critical applications
+
+35-A company is hosting a MySQL database in AWS using the AWS RDS service. To offload the reads, a Read Replica has been created and reports are run off the Read Replica database. But at certain times, the reports show stale data. What could be the possible reason behind this?
+
+The Read Replica has not been created properly.
+
+The backup of the original database has not been set properly.
+
+C-This is due to the replication lag. 
+
+The Multi-AZ feature is not enabled.
+
+
+An AWS Whitepaper on the caveat for reading Replicas is given below which must be taken into consideration by architects: Read Replicas are separate database instances that are replicated asynchronously. As a result, they are subject to replication lag and might be missing some of the latest transactions. Application architects need to consider which queries have the tolerance to slightly stale data. Those queries can be executed on a Read Replica, while the rest should run on the primary node. Read Replicas may also not accept any write queries
+
+36-You have enabled CloudTrail logs for your company’s AWS account. In addition, the IT Security department has mentioned that the logs need to be encrypted. How could this be achieved?
+
+Enable SSL certificates for the CloudTrail logs.
+
+B-There is no need to do anything since the logs will already be encrypted.
+
+Enable Server-Side Encryption for the trail.
+
+Enable Server-Side Encryption for the destination S3 bucket.
+
+Açıklama : Varsayılan olarak, CloudTrail olay günlüğü dosyaları Amazon S3 sunucu tarafı şifrelemesi (SSE) kullanılarak şifrelenir. Ayrıca günlük dosyalarınızı bir AWS Key Management Service (AWS KMS) anahtarıyla şifrelemeyi de seçebilirsiniz. Günlük dosyalarınızı istediğiniz kadar kovanızda saklayabilirsiniz. Günlük dosyalarını otomatik olarak arşivlemek veya silmek için Amazon S3 yaşam döngüsü kurallarını da tanımlayabilirsiniz. Günlük dosyası teslimi ve doğrulama hakkında bildirimler istiyorsanız Amazon SNS bildirimlerini ayarlayabilirsiniz.
+
+37- A company has set up its data layer in the Simple Storage Service. There are a number of requests which include read/write and updates to objects in an S3 bucket. Users sometimes complain that updates to an object are not being reflected. What could be the most likely reason for this?
+
+Versioning is not enabled for the bucket, so the newer version does not reflect the right data.
+
+B-Updates made to the objects usually take sometime to reflect.
+
+Encryption is enabled for the bucket, hence it is taking time for the update to occur.
+
+The metadata for the S3 bucket is incorrectly configured.
+
+Explanation : Updates made to the objects in S3 follow an eventual consistency model. Hence, for object updates, there can be a slight delay when an updated object is provided back to the user on the next read request.
+Açıklama : S3'teki nesnelere yapılan güncellemeler, nihai bir tutarlılık modelini takip eder. Bu nedenle, nesne güncellemeleri için, bir sonraki okuma isteğinde kullanıcıya güncellenmiş bir nesne sağlandığında hafif bir gecikme olabilir.
+
+38-Your company has enabled CORS on your S3 bucket to allow cross-origin resource sharing. In the CORS configuration, you need to specify the values for the "AllowedMethod" element. What would be your suggestion to the developer?
+
+Those two methods require special permission from AWS
+
+The developer’s user profile was limited to and required to be updated 
+
+C-Only these methods are supported: GET, PUT, POST, DELETE, and HEAD 
+
+OPTIONS and CONNECT are controlled by other bucket policies
+
+39-Your company stores a big amount of archive data in expensive on-premises storage systems.You need to move the data to low cost storage such as Amazon S3 Glacier. Which of the following tools is the most suitable to simplify and automate the data transfer from on premises to S3 Glacier?
+
+AWS DataSync
+
+Server Migration Service
+
+Database Migration Service 
+
+Direct Connect
+1/1 point
+Explanation : AWS DataSync should be selected as it can simplify moving data between on-premises storage and AWS services such as S3 Glacier. Option​ ​A ​is​ CORRECT:​ With AWS DataSync, users can create a task to specify the data source and destination and then configure the data transfer. Option​ ​B ​is​ ​incorrect:​ Because Server Migration Service is used to migrate on-premise servers such as VMware. Option​ ​C ​is​ ​incorrect:​ Database Migration Service is used to migrate a database instead of local storage. Option​ ​D ​is​ ​incorrect:​ Direct Connect sets up a dedicated network connection to AWS. However it does not automate the data transfer to AWS.
+
+40-A company has been using AWS cloud services for six months and have just finished a security review. Which of the following is considered a best practice in the security pillar of the well-architected framework?
+
+Using the root user to create all-new user accounts, at any time
+
+Monitoring and using alerts using CloudTrail and CloudWatch
+
+Assigning Private IP address ranges to VPCs that do not overlap
+
+Designing the system using elasticity to meet changes in demand
+1/1 point
+Explanation : Option B is correct. Monitoring and alerting for key metrics and events is the best practice of the Security pillar Option A is incorrect. For the root user, you should follow the best practice of using this login only to create another, an initial set of IAM users and groups for longer-term identity management operations Option C is incorrect. Non-overlapping Private IP addresses are in the Reliability pillar. D. Design using elasticity to meet demand is in the Performance Efficiency pillar (Design for Cloud Operations).
+
+41-A company has a Redshift Cluster defined in AWS. The IT Operations team have ensured that both automated and manual snapshots are in place. Since the cluster is going to be run for a couple of years, Reserved Instances have been purchased. There has been a recent concern on the cost, being incurred by the cluster. Which step should be carried out to minimize the costs being incurred by the cluster?
+
+A-Delete the manual snapshots.
+
+Set the retention period of the automated snapshots to 35 days.
+
+Choose to use Spot Instances instead of Reserved Instances.
+
+Choose to use Instance store volumes to store the cluster data.
+
+Otomatik anlık görüntüleri etkinleştirip etkinleştirmediğinizden bağımsız olarak, istediğiniz zaman istediğiniz zaman manuel bir anlık görüntü alabilirsiniz. Varsayılan olarak, el ile anlık görüntüler, kümenizi sildikten sonra bile süresiz olarak korunur. El ile anlık görüntü oluşturduğunuzda saklama süresini belirtebilir veya anlık görüntüyü değiştirerek saklama süresini değiştirebilirsiniz. Amazon Redshift konsolunu kullanarak bir anlık görüntü oluşturursanız, anlık görüntü saklama süresini varsayılan olarak 365 gün olarak ayarlar. Otomatik anlık görüntüler, 1(En Az) ila 35(Maks) gün arasındaki süre içinde (saklama süresi ayarlarına göre) otomatik olarak silinir. Bu nedenle, Otomatik anlık görüntüler yerine Manuel anlık görüntülerle ilgilenmeliyiz. Amazon Redshift, Otomatik Anlık Görüntülerde olduğu gibi Manuel anlık görüntüleri hiçbir zaman otomatik olarak silmez.
+
+42-As a solutions architect, you need to design a multi-tier architecture for a project in AWS. The application contains three tiers: the frontend layer, business logic layer and storage layer. The frontend and business logic layers are implemented by Auto Scaling groups and Amazon DynamoDB is selected as the data storage option in the storage layer. Which of the following options is NOT a feature of this architecture?
+
+Each layer is modularized and managed independently. 
+
+The backend and data storage are not exposed to the internet and protected in private subnets.
+
+The architecture is completely serverless so that users do not need to configure the desired number of servers or capabilities.
+
+Frontend and backend servers can be configured in different availability zones for high availability.
+1/1 point
+Explanation : The multi-tier architecture in AWS has a number of features such as high availability and scalability, fault tolerant and security. The question asks for the option that is NOT a feature. Option C should be selected as you still need to configure the min/max/desired number of servers in ASGs and the read/write capabilities in DynamoDB tables. Option​ ​A ​is​ ​incorrect:​ Because the application is divided into three components and each component works independently. Option​ ​B ​is​ ​incorrect:​ Because the backend and data storage are located in private subnets. Users can only reach the frontend layer. Option​ ​C ​is​ CORRECT:​ Refer to the above explanations. This architecture is not completely serverless. Option​ ​D ​is​ ​incorrect:​ Because the servers in ASG can be put into several availability zones so that even if one AZ has an outage, the servers in other AZs can still work as normal
+
+43- A company requires an open-source system for automating the deployment, scaling, and management of containerized applications. Which of the following would be ideal for such a requirement?
+
+A-Use the Amazon Elastic Container Service for Kubernetes.
+
+Install a custom orchestration tool on EC2 Instances.
+
+ Use SQS to orchestrate the messages between docker containers. 
+
+Use AWS Lambda functions to embed the logic for container orchestration.
+
+Explanation: Amazon Elastic Container Service for Kubernetes (Amazon EKS) is a managed service that makes it easy for you to run Kubernetes on AWS without the requirement of installing and operating your own Kubernetes clusters. Kubernetes is an open-source system for automating the deployment, scaling, and management of containerized applications. Operating Kubernetes for production applications presents a number of challenges. You need to manage the scaling and availability of your Kubernetes masters and persistence layer by ensuring that you have chosen appropriate instance types, running them across multiple Availability Zones, monitoring their health, and replacing unhealthy nodes. You need to patch and upgrade your masters and worker nodes to ensure that you are running the latest version of Kubernetes. All this requires expertise and a lot of manual work. With Amazon EKS, upgrades and high availability are managed for you by AWS.
+
+Kubernetes için Amazon Elastic Container Service (Amazon EKS), kendi Kubernetes kümelerinizi kurmanıza ve çalıştırmanıza gerek kalmadan Kubernetes'i AWS'de çalıştırmanızı kolaylaştıran yönetilen bir hizmettir. Kubernetes, kapsayıcılı uygulamaların dağıtımını, ölçeklenmesini ve yönetimini otomatikleştirmek için açık kaynaklı bir sistemdir. Üretim uygulamaları için Kubernetes'i çalıştırmak bir takım zorluklar sunar. Uygun bulut sunucusu türlerini seçtiğinizden emin olarak, bunları birden çok Erişilebilirlik Alanında çalıştırarak, durumlarını izleyerek ve sağlıksız düğümleri değiştirerek Kubernetes ana sunucularınızın ve kalıcılık katmanınızın ölçeklendirmesini ve kullanılabilirliğini yönetmeniz gerekir. Kubernetes'in en son sürümünü çalıştırdığınızdan emin olmak için ana ve çalışan düğümlerinizi yamalamanız ve yükseltmeniz gerekir. Bütün bunlar uzmanlık ve çok fazla manuel çalışma gerektirir. Amazon EKS ile yükseltmeler ve yüksek kullanılabilirlik AWS tarafından sizin için yönetilir.
+
+44-You are building a microservice architecture in AWS for a web application. A Lambda function collects clients’ requests and forwards them to a standard SQS queue. Another Lambda function gets messages from the queue and processes them. Your manager is worried about the availability of the SQS queue which may become a single point of failure. How would you address this concern?
+
+Create another SQS queue to provide a redundancy.
+
+Select multiple availability zones when creating the SQS queue.
+
+Configure the SQS queue to be the FIFO queue.
+
+No actions are required as Amazon SQS uses redundant infrastructure to provide high availability.
+1/1 point
+Explanation : Option​ ​A ​is​ ​incorrect:​ Because there is no need of doing that as SQS service is highly available. Option​ ​B ​is​ ​incorrect:​ Because users cannot select availability zones when configuring the SQS queue. Option​ ​C ​is​ ​incorrect:​ Because both standard and FIFO queues provide high availability. Option​ ​D ​is​ CORRECT:​ SQS is a highly available system so no actions are required.
+
+45-You maintain a DynamoDB table that stores customers’ subscription data. High availability is very important for the table and even if there is an outage in an AWS region, the application should still be able to access the data from other regions. Which method would you take to achieve this requirement?
+
+Create a read replica in another region as a backup.
+
+Configure a Multi-AZ backup for the DynamoDB table
+
+Configure a global table to use DynamoDB as a multi-region database.
+
+No actions required as DynamoDB is a global service.
+
+
+Explanation : Amazon DynamoDB global tables provide a solution for deploying a multi-region, multi-master database. Option​ ​A ​is​ ​incorrect:​ Because DynamoDB does not have such a feature. Option​ ​B ​is​ ​incorrect:​ Because there is no need to configure Multi-AZ for a DynamoDB table and it is highly available by default Option​ ​C ​is​ CORRECT:​ With the DynamoDB global table, when one AWS region becomes unavailable, users can still access the same data in other regions. Option​ ​D ​is​ ​incorrect:​ Refer to option C.
+
+46-You have a set of IIS Servers running on EC2 Instances. You want to collect and process the log files generated from these IIS Servers. Which service would be ideal to run in this scenario?
+
+Amazon S3 for storing the log files and Amazon EMR for processing the log files
+
+Amazon S3 for storing the log files and EC2 Instances for processing the log files
+
+Amazon EC2 for storing and processing the log files
+
+Amazon DynamoDB to store the logs and EC2 for running custom log analysis scripts
+
+Amazon EMR, büyük miktarda veriyi işlemek ve analiz etmek için Apache Hadoop ve Apache Spark gibi büyük veri çerçevelerini AWS üzerinde çalıştırmayı basitleştiren, yönetilen bir küme platformudur. Bu çerçeveleri ve Apache Hive ve Apache Pig gibi ilgili açık kaynak projelerini kullanarak, verileri analitik amaçlar ve iş zekası iş yükleri için işleyebilirsiniz. Ek olarak, büyük miktarda veriyi Amazon Simple Storage Service (Amazon S3) ve Amazon DynamoDB gibi diğer AWS veri depolarına ve veritabanlarına dönüştürmek ve bu veritabanlarından taşımak için Amazon EMR'yi kullanabilirsiniz. B ve C seçenekleri kısmen doğrudur. Bu konuda yardımcı olacak hazır bir hizmetiniz olduğunda EC2 Bulut Sunucularının günlük dosyalarını işlemesi için bir ek yük olacaktır. DynamoDB günlük dosyalarını depolamak için ideal bir seçenek olmadığından D seçeneği geçersizdir.
+
+47-You need to ensure that new objects being uploaded to an S3 bucket are available in another region, due to the criticality of the data hosted in the S3 bucket. How could you achieve this in the easiest way possible?
+
+Enable Cross-Region Replication for the bucket.
+
+Write a script to copy the objects to another bucket in the destination region.
+
+Create an S3 snapshot in the destination region.
+
+Enable versioning that will copy the objects to the destination region.
+1/1 point
+Explanation : Cross-Region Replication is a bucket-level configuration that enables automatic, asynchronous copying of objects across buckets in different AWS Regions.
+
+48_You are working as an AWS Architect for a global media firm. They have web servers deployed on EC2 instances across multiple regions. For audit purposes, you have created a CloudTrail trail to store all CloudTrail event log files to the S3 bucket. This trail applies to all regions & is stored in S3 buckets at the EU-Central region. During last year’s audit, auditors have raised a query on the integrity of log files that are stored in the S3 buckets and tendered as Non-Compliance. Which feature could help you to gain compliance from Auditors for this query?
+
+Use Amazon SSE-S3 encryption for the CloudTrail log file while storing it to S3 buckets.
+
+Use Amazon SSE-KMS encryption for CloudTrail log file while storing it to S3 buckets.
+
+Use an S3 bucket policy to grant access to only Security head for S3 buckets having CloudTrail log files.
+
+D-Enable the CloudTrail log file integrity validation feature.
+
+After you enable CloudTrail log file integrity, it will create a hash file called digest file which refers to logs that are generated. This digest file is saved in a different folder in the S3 bucket where log files are saved. Each of these digest files has the private key of public & private key pair. The DIgest file can be validated using the public key. This feature ensures that all the modifications made to CloudTrail log files are recorded. Option A is incorrect as by default all CloudTrail log files are delivered to S3 buckets using SSE-S3 encryption, this will not ensure the integrity of log files. Option B is incorrect as with Amazon SSE-KMS encryption for CloudTrail log file, there would be an additional layer of security for log files, but it won’t ensure the integrity of log files. Option C is incorrect as although this will restrict access to the bucket but won’t ensure that no modification has been done to log files post delivering in S3 buckets.
+
+49- You work in the media industry and have created a web application where users will be able to upload photos they create, to your website. This web application must be able to call the S3 API in order to function properly. Where would you store your API credentials while maintaining the maximum level of security?
+
+Save the API credentials to your PHP files.
+
+Don’t save your API credentials. Instead, create a role in IAM and assign this role to an EC2 instance when you first create it. 
+
+Save your API credentials in a public Github repository.
+
+Pass API credentials to the instance using instance user data.
+1/1 point
+Explanation : Applications must sign their API requests with AWS credentials. Therefore, if you are an application developer, you need a strategy for managing credentials for your applications that run on EC2 instances. For example, you can securely distribute your AWS credentials to the instances, enabling the applications on those instances to use your credentials to sign requests, while protecting your credentials from other users. However, it&#39;s challenging to securely distribute credentials to each instance, especially those that the AWS creates on your behalfs, such as Spot Instances or instances in Auto Scaling groups. You must also be able to update the credentials on each instance when you rotate your AWS credentials. IAM roles are designed so that your applications can securely make API requests from your instances, without requiring you to manage the security credentials that the applications use.
+
+50- You are working as an AWS Architect for a global insurance firm. For the web application, you are using S3 buckets and have configured CloudFront to cache image files. For audit purposes, you have created a CloudTrail trail in each region and the events logs files are logged in S3 bucket in the us-west-1 region. There have been changes in CloudFront which have caused all traffic being routed to the origin, resulting in increased latency for users in other continents. After scrutinizing CloudTrail logs, you found that there are duplicate CloudFront events being logged. What configuration changes would you perform to eliminate duplicate CloudFront logs?
+
+A-Using AWS CLI, update CloudTrail trail to disable global service events that are delivered in all regions except US-West-1.
+
+Using AWS CLI, change the configuration of a trail to logging a single region instead of logging all regions.
+
+Using AWS console, update CloudTrail trail to disable global service events to be delivered in all regions except US-West-1.
+
+Using the AWS console, change the configuration of a trail to logging a single region instead of logging all regions
+0/1 point
+Explanation : Amazon CloudFront is a global service for which events are delivered to CloudTrail trails which include global services. To avoid duplicate Amazon CloudFront events, you can disable these events from delivering to CloudTrail trails in all regions & enable in only one region. Options B & D is incorrect as if CloudTrail trail is changed to logging a single region, global service event logging is off automatically, this will disable CloudFront events being logged instead of avoiding duplicate logs. Option C is incorrect as Changes to Global service event logs can be done only via AWS CLI & not via AWS console.
+
+51- You are working for a start-up firm that developed a new multilingual website for sharing images and video files. You are using EC2 instance to host this web application. To deliver these web content with the lowest latency to end-users, you have configured Amazon CloudFront which forward query strings to origin servers based on selected parameter values and also cache web content based upon these parameter values. During the trial, it was observed that caching is not happening based upon query strings resulting in these requests hitting origin servers. Which of the following need to be checked if CloudFront is caching properly based upon query strings? (Select Three)
+
+Make sure that the distribution is an RTMP distribution.
+
+B-Make sure that the delimiter character between query string parameters is a '&' character.
+
+C-Check if Parameters' names and values are in the same case.
+
+Make sure that the delimiter character between query string parameters is a “ / ” character.
+
+E-Make sure that the distribution is a Web distribution.
+
+Check only that the query parameter names are in the same case
+
+
+Explanation : CloudFront Query String Forwarding only supports Web distribution. For query string forwarding, the delimiter character must be always a '&' character. Parameters' names and values used in the query string are case sensitive. Option A is incorrect as CloudFront Query String Forwarding does not support RTMP distribution. Option D is incorrect as Delimiter Character should be always '&', not '\' character. Option F is incorrect as in the case of Parameters in the query string, both the parameters' names and values are case sensitive.
+52- IoT sensors monitor the number of bags that are handled at an airport. The data is sent back to a Kinesis stream with default settings. Every alternate day, the data from the stream is sent to S3 for processing. But it is noticed that S3 is not receiving all of the data that is being sent to the Kinesis stream. What could be the reason for this?
+
+The sensors probably stopped working on some days, hence data is not sent to the stream.
+
+S3 can only store data for a day.
+
+C-The default retention period of the data stream is set to 24 hours only, and hence the failure.
+
+Kinesis streams are not meant to handle IoT related data.
+1/1 point
+Explanation : Kinesis Streams support changes to the data record retention period of your stream. A Kinesis stream is an ordered sequence of data records, meant to be written to and read from in real-time. Data records are therefore stored in shards in your stream temporarily. The time period from when a record is added to when it is no longer accessible is called the retention period. A Kinesis stream stores the records from 24 hours (by default), up to 168 hours. Option A is incorrect, even though a possibility, cannot be considered as the right option. Option B is incorrect since S3 can store data indefinitely unless you have a lifecycle policy defined. Option D is incorrect because the Kinesis service is perfect for this sort of data ingestion.
+Done
+
+53-You are working as an AWS Administrator for a software firm that has a popular Web application hosted on EC2 instance in various regions. You are using AWS CloudHSM for offloading SSL/TLS processing from Web servers. Since this is a critical application for the firm, you need to ensure that proper backups are performed for data in AWS CloudHSM on a daily basis. What does the AWS CloudHSM use to perform a secure & durable backup?
+
+A-Ephemeral backup key (EBK) is used to encrypt data & Persistent backup key (PBK) is used to encrypt EBK before saving data to the Amazon S3 bucket in the same region as that of AWS CloudHSM cluster.
+
+b-Data Key is used to encrypt data & Customer Managed Key (CMK) is used to encrypt Data Key before saving data to the Amazon S3 bucket in the same region as that of AWS CloudHSM cluster.
+
+c-Ephemeral Backup Key (EBK) is used to encrypt data & Persistent backup Key (PBK) is used to encrypt EBK before saving data to the Amazon S3 bucket in a different region than the AWS CloudHSM cluster. 
+
+d-Data Key is used to encrypt data & Customer Managed Key (CMK) is used to encrypt Data Key before saving data to Amazon S3 bucket in a different region than the AWS CloudHSM cluster.
+
+Explanation : To backup the AWS CloudHSM data to Amazon S3 buckets in the same region, AWS CloudHSM generates a unique Ephemeral Backup Key (EBK) to encrypt all data using AES 256-bit encryption key. This Ephemeral Backup Key (EBK) is further encrypted using Persistent Backup Key (PBK) which is also AES 256-bit encryption key. Option B is incorrect as Data Key & Customer Managed Key are not used by AWS CloudHSM for the encryption of data, instead of that EBK & PBK are used. Option C is incorrect. While taking the backup of data from different AWS CloudHSM clusters to the Amazon S3 bucket, the Amazon S3 bucket should be in the same region as that of the AWS CloudHSM cluster. Option D is incorrect as Data Key & Customer Managed Key are not used by AWS CloudHSM for the encryption of data, instead of that EBK & PBK are used for encrypting and saving data to the Amazon S3 bucket in the same region.
+
+Açıklama : AWS CloudHSM verilerini aynı bölgedeki Amazon S3 klasörlerine yedeklemek için AWS CloudHSM, tüm verileri AES 256 bit şifreleme anahtarı kullanarak şifrelemek için benzersiz bir Geçici Yedekleme Anahtarı (EBK) oluşturur. Bu Geçici Yedekleme Anahtarı (EBK), ayrıca AES 256 bit şifreleme anahtarı olan Kalıcı Yedekleme Anahtarı (PBK) kullanılarak daha da şifrelenir. Veri Anahtarı ve Müşteri Tarafından Yönetilen Anahtar, verilerin şifrelenmesi için AWS CloudHSM tarafından kullanılmadığından, bunun yerine EBK ve PBK kullanıldığından B Seçeneği yanlıştır. C seçeneği yanlıştır. Farklı AWS CloudHSM kümelerinden verilerin yedeğini Amazon S3 klasörüne alırken Amazon S3 klasörü, AWS CloudHSM kümesiyle aynı bölgede olmalıdır. Veri Anahtarı ve Müşteri Tarafından Yönetilen Anahtar, AWS CloudHSM tarafından verilerin şifrelenmesi için kullanılmadığından, aynı bölgedeki Amazon S3 klasörüne veri şifrelemek ve kaydetmek için EBK ve PBK kullanıldığından D seçeneği yanlıştır.
+
+54-You are working as an AWS Architect for a start-up company. You have developed an application that will read out AWS Blogs to AWS professionals using "Amazon Polly". You need to perform a trial with the "Amazon S3" blog, in which the first "S3" should be read as "Amazon Simple Storage Service" while all subsequent "S3" should be read as "S3". This test needs to be done in 2 different regions, us-west-1 & us-east-1. What could be done to perform the test successfully?
+
+a-Using multiple Lexicons, create different alias for the word “ S3” & apply in different orders. Upload Lexicons in us-west-1 region & use for both regions. 
+
+B-Using multiple Lexicons, create different alias for the word “ S3” & apply in different orders. Upload Lexicons in us-west-1 region & us-east-1 region.
+
+c-Using a single Lexicon, create different alias for the word “ S3” & apply in different orders. Upload Lexicons in us-west-1 region & us-east-1 region.
+
+d-Using a single Lexicon, create different alias for the word “ S3” & apply in different orders. Upload Lexicons in us-east-1 region & use for both regions.
+
+Explanation : Lexicons are specific to a region. You will need to upload Lexicon in each region where you need to use it. For a single text which appears multiple times in the content, you can create an alias using multiple Lexicons to have different speech. Option A is incorrect as Lexicons needs to upload in all regions where content will be using Amazon Polly. Option C is incorrect as if a single word is repeating multiple times in content & needs to have different speech, we need to have multiple Lexicons created. Option D is incorrect as Lexicons needs to upload in all regions where content will be using Amazon Polly & to have a different speech for the single word being repeated multiple times, multiple Lexicons needs to be created.
+Açıklama : Sözlükler bir bölgeye özgüdür. Lexicon'u kullanmanız gereken her bölgeye yüklemeniz gerekecektir. İçerikte birden çok kez görünen tek bir metin için, farklı konuşmaya sahip olmak için birden çok Sözlük kullanarak bir takma ad oluşturabilirsiniz. İçeriğin Amazon Polly'yi kullanacağı tüm bölgelerde Lexicons'ın yüklenmesi gerektiğinden A seçeneği yanlıştır. C seçeneği, içerikte tek bir kelime birden çok kez tekrarlanıyormuş gibi yanlıştır ve farklı konuşmalara sahip olması gerekir, birden fazla Lexicons oluşturmamız gerekir. İçeriğin Amazon Polly'yi kullanacağı tüm bölgelerde Lexicons'ın yüklenmesi ve tek bir kelimenin birden çok kez tekrarlanması için farklı bir konuşmaya sahip olması gerektiğinden D seçeneği yanlıştır, birden fazla Lexicons oluşturulması gerekir.
+
+55- You create several SQS queues to store different types of customer requests. Each SQS queue has a backend node that pulls messages for processing. Now you need a service to collect messages from the frontend and push them to the related queues using the publish/subscribe model. Which service would you choose?
+
+Amazon MQ
+
+B-Amazon Simple Notification Service (SNS)
+
+Amazon Simple Queue Service (SQS)
+
+AWS Step Functions 
+
+Explanation : AWS SNS is able to push notifications to the related SQS endpoints. SNS uses a publish/subscribe model that provides instant event notifications for applications. Option​ ​A ​is​ ​incorrect:​ Amazon MQ is a managed message broker service which is not suitable for this scenario. Option​ ​B ​is​ CORRECT:​ Because SNS uses Pub/Sub messaging to provide asynchronous event notifications. Please check https://aws.amazon.com/pub-sub-messaging/. Option​ ​C ​is​ ​incorrect:​ Because SQS does not use the publish/subscribe model. Option​ ​D ​is​ ​incorrect:​ AWS Step Functions coordinates application components using visual workflows. The service should not be used in this scenario.
+
+AWS SNS, ilgili SQS uç noktalarına bildirim gönderebilir. SNS, uygulamalar için anında olay bildirimleri sağlayan bir yayınlama/abone olma modeli kullanır. A seçeneği ​yanlış:​ Amazon MQ, bu senaryo için uygun olmayan, yönetilen bir mesaj aracısı hizmetidir. B Seçeneği DOĞRU: Çünkü SNS, eşzamansız olay bildirimleri sağlamak için Pub/Sub mesajlaşmasını kullanır. Lütfen https://aws.amazon.com/pub-sub-messaging/ adresini kontrol edin. Seçenek C yanlıştır: Çünkü SQS yayınlama/abone olma modelini kullanmaz. D Seçeneği yanlıştır: AWS Step Functions, görsel iş akışlarını kullanarak uygulama bileşenlerini koordine eder. Hizmet bu senaryoda kullanılmamalıdır.
+
+56-As a part of your application architecture requirements, the company has requested the ability to run analytics against all the combined log files from the Elastic Load Balancer. Which services would you use together to collect logs and process log file analysis in an AWS environment?
+
+Amazon DynamoDB to store the logs and EC2 to run custom log analysis scripts
+
+Amazon EC2 for storing and processing the log files
+
+Amazon S3 for storing the ELB log files and EC2 for processing the log files analysis
+
+Amazon S3 for storing ELB log files and Amazon EMR for processing the log files analysis
+1/1 point
+Explanation : Amazon EMR provides a managed Hadoop framework that makes it easy, fast, and cost-effective to process a vast amount of data across dynamically scalable Amazon EC2 instances. You can also run other popular distributed frameworks such as Apache Spark, HBase, Presto, and Flink in Amazon EMR, and interact with data in other AWS data stores such as Amazon S3 and Amazon DynamoDB. Amazon EMR securely and reliably handles a broad set of big data use cases, including log analysis, web indexing, data transformations (ETL), machine learning, financial analysis, scientific simulation, and bioinformatics.
+
+Amazon EMR, dinamik olarak ölçeklenebilir Amazon EC2 bulut sunucularında büyük miktarda verinin işlenmesini kolay, hızlı ve uygun maliyetli hale getiren yönetilen bir Hadoop çerçevesi sağlar. Ayrıca Amazon EMR'de Apache Spark, HBase, Presto ve Flink gibi diğer popüler dağıtılmış çerçeveleri çalıştırabilir ve Amazon S3 ve Amazon DynamoDB gibi diğer AWS veri depolarındaki verilerle etkileşim kurabilirsiniz. Amazon EMR, günlük analizi, web dizine ekleme, veri dönüştürmeleri (ETL), makine öğrenimi, finansal analiz, bilimsel simülasyon ve biyoinformatik dahil olmak üzere çok çeşitli büyük veri kullanım senaryolarını güvenli ve güvenilir bir şekilde işler.
