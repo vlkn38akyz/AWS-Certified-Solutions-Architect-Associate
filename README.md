@@ -716,3 +716,15 @@ Amazon S3 for storing ELB log files and Amazon EMR for processing the log files 
 Explanation : Amazon EMR provides a managed Hadoop framework that makes it easy, fast, and cost-effective to process a vast amount of data across dynamically scalable Amazon EC2 instances. You can also run other popular distributed frameworks such as Apache Spark, HBase, Presto, and Flink in Amazon EMR, and interact with data in other AWS data stores such as Amazon S3 and Amazon DynamoDB. Amazon EMR securely and reliably handles a broad set of big data use cases, including log analysis, web indexing, data transformations (ETL), machine learning, financial analysis, scientific simulation, and bioinformatics.
 
 Amazon EMR, dinamik olarak ölçeklenebilir Amazon EC2 bulut sunucularında büyük miktarda verinin işlenmesini kolay, hızlı ve uygun maliyetli hale getiren yönetilen bir Hadoop çerçevesi sağlar. Ayrıca Amazon EMR'de Apache Spark, HBase, Presto ve Flink gibi diğer popüler dağıtılmış çerçeveleri çalıştırabilir ve Amazon S3 ve Amazon DynamoDB gibi diğer AWS veri depolarındaki verilerle etkileşim kurabilirsiniz. Amazon EMR, günlük analizi, web dizine ekleme, veri dönüştürmeleri (ETL), makine öğrenimi, finansal analiz, bilimsel simülasyon ve biyoinformatik dahil olmak üzere çok çeşitli büyük veri kullanım senaryolarını güvenli ve güvenilir bir şekilde işler.
+
+57-You have a set of Docker images that you use for building containers. You want to start using the Elastic Container Service and utilize the Docker images. You need a place to store these Docker images. What would you use for this purpose?
+
+Use AWS DynamoDB to store the Docker images.
+
+Use AWS RDS to store the Docker images.
+
+Use EC2 Instances with EBS Volumes to store the Docker images.
+
+Use the ECR Service to store the Docker images.
+
+Explanation : Amazon Elastic Container Registry (ECR) is a fully-managed Docker container registry that makes it easy for developers to store, manage, and deploy Docker container images. Amazon ECR is integrated with Amazon Elastic Container Service (ECS), simplifying your development to production workflow.
