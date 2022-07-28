@@ -806,3 +806,64 @@ Shard your data set among multiple Amazon RDS DB Instances.
 Enable Multi-AZ for your Amazon RDS DB Instance.
 2/3 points
 Expl: Amazon RDS Read Replicas provide enhanced performance and durability for Option B is incorrect because it is not an ideal way to scale a database. Amazon RDS Auto Scaling is to scale the storage capacity. If the storage capacity threshold is reached, then capacity will be scaled through Auto Scaling. RDS Auto Scaling does not look for the CPU utilization threshold so it cannot be a solution for bottlenecks to read heavy databases. Option C is not an ideal choice. Because our application is read-heavy and this is the cause of the problem that we are facing with the RDS. So for this issue, Creating Read replicas, Elastic cache implementation, and Sharding the dataset are the ways through which we can tackle this issue. But if we have too may PUT requests for the DB, that is causing the issue then we can create an SQS queue and store these PUT requests in the message queue and then process it accordingly. Option F is invalid because the Multi-AZ feature is only a failover option.
+
+64-You have an application that has been dockerized. You plan to deploy the application in an AWS ECS cluster. As the application gets configuration files from an S3 bucket, the ECS containers should have the AmazonS3ReadOnlyAccess permission. What is the correct method to configure the IAM permission?
+
+Add an environment to the ECS cluster configuration to allow the S3 read only access.
+
+Add the AmazonS3ReadOnlyAccess permission to the IAM entity that creates the ECS cluster.
+
+Modify the user data of ECS instances to assume an IAM role that has the AmazonS3ReadOnlyAccess permission.
+
+Attach the AmazonS3ReadOnlyAccess policy to the ECS container instance IAM role. Attach this role when creating the ECS cluster.
+0/1 point
+Explanation: Correct Answer – D ECS containers have access to permissions that are supplied to the container instance role. Option A is incorrect: Because ECS cluster uses the container instance IAM role instead of environment variables to control its permissions. Option B is incorrect: Because the IAM entity that creates the ECS cluster does not pass its permissions to the ECS cluster. You need to conjure an IAM role and attach it to the ECS cluster. Option C is incorrect: This is not the correct method to configure IAM permissions for an ECS cluster. Option D is CORRECT: After the AmazonS3ReadOnlyAccess policy is attached to the IAM role, the ECS instances can use the role to get objects from S3.
+
+65-Your company currently has a set of EC2 Instances hosted in AWS. The states of these instances need to be monitored and each state needs to be changed when a metric breaches a threshold value. Which step could be helpful to fulfill this requirement? (SELECT TWO)
+
+Use CloudWatch logs to store the state change of the instances.
+
+Create an Amazon CloudWatch alarm that monitors an Amazon EC2 instance.
+
+Use SQS to trigger a record to be added to a DynamoDB table.
+
+Use AWS Lambda to store a change record in a DynamoDB table.
+1/2 points
+Explanation: Option A is correct. Using Cloudwatch logs collect, store, view, and search logs from AWS and non-AWS resources. Option B is correct. CloudWatch alarms are used to trigger notifications for any metric. Alarms can go to auto-scaling, EC2 actions(stop, terminate, recover, or reboot) and SNS notifications. Option C is incorrect as SQS cannot be used for monitoring. Option D is incorrect as AWS Lambda cannot be used for monitoring.
+
+66- You have an S3 bucket that receives photos uploaded by customers. When an object is uploaded, an event notification is sent to an SQS queue with the object details. You also have an ECS cluster that gets messages from the queue to do the batch processing. The queue size may change greatly depending on the number of incoming messages and backend processing speed. Which metric would you use to scale up/down the ECS cluster capacity?
+
+The number of messages in the SQS queue.
+
+Memory usage of the ECS cluster.
+
+Number of objects in the S3 bucket.
+
+Number of containers in the ECS cluster.
+0/1 point
+Explanation: Correct Answer – A In this scenario, SQS queue is used to store the object details which is a highly scalable and reliable service. ECS is ideal to perform batch processing and it should scale up or down based on the number of messages in the queue. Option A is CORRECT: Users can conjure a CloudWatch alarm based on the number of messages in the SQS queue and notify the ECS cluster to scale up or down using the alarm. Option B is incorrect: Because the memory usage may not be able to reflect the workload. Option C is incorrect: Because the number of objects in S3 cannot determine if the ECS cluster should change its capacity. Option D is incorrect: Because the number of containers cannot be used as a metric to trigger an auto-scaling event.
+
+67-You have planned to host a web application on AWS. You create an EC2 Instance in a public subnet which needs to connect to an EC2 Instance that will host an Oracle database. Which steps would ensure a secure setup? (SELECT TWO)
+
+Place the EC2 Instance with the Oracle database in the same public subnet as the Webserver for faster communication.
+
+Place the ec2 instance in a public subnet and the oracle database in a private subnet.
+
+Create a database Security group which allows incoming traffic only from the Web server's security group.
+
+Ensure that the database security group allows incoming traffic from 0.0.0.0/0
+1/2 points
+Explanation: Correct Answer – B and C The best and most secure option is to place the database in a private subnet. The below diagram from AWS Documentation shows this setup. Also, you ensure that access is not allowed from all sources but only from the web servers. Option A is incorrect because as per the best practice guidelines, DB instances are placed in Private subnets and allowed to communicate with web servers in the public subnet. Option D is incorrect because allowing all incoming traffic from the Internet to the DB instance is a security risk.
+
+68-You have an RDS instance in a VPC. In the same AWS account, there is an EC2-Classic instance that does not belong to any VPC. The EC2 instance needs to communicate with the RDS instance using its private IPv4 address. Which method would you use?
+
+Modify the security group of the RDS instance to allow the incoming traffic from the EC2-Classic instance.
+
+Attach a security group to the EC2 instance to allow all outgoing traffic.
+
+Enable PrivateLink for the VPC and link the EC2-Classic instance.
+
+Enable ClassicLink for the VPC and link the EC2 instance to the VPC.
+0/1 point
+Expalanation: Correct Answer – D For the communication between EC2-Classic instance and resources in VPC, ClassicLink should be used. Option A is incorrect: Even if the security group is modified, the EC2-Classic instance still cannot talk with the RDS instance in the VPC. Option B is incorrect: Same as option A. Option C is incorrect: Because PrivateLink is used for resources within the VPC. It is not suitable for EC2-Classic instances. Option D is CORRECT: Because ClassicLink is the correct method to link EC2-Classic instances to VPC resources. Check the above link for how to work with ClassicLink.
+Done
