@@ -1,0 +1,71 @@
+1-A start-up firm has created a cloud storage application which gives users the ability to store any amount of personal data & share with their contacts. For this they are using Amazon S3 buckets to store user data. During the last quarter, the costing team has observed a surge in storage cost for S3 bucket. Further checking observed that there are many 100 GB files which are uploaded by users & are in partially completed state. As an AWS consultant, the IT Team is requesting you for deleting all such files which are uploaded before current quarter. Which of the following actions can be taken to meet this requirement in a cost effective way with least effort?
+
+Create S3 lifecycle Configuration to abort incomplete multipart uploads.
+
+Manually delete incomplete multipart uploads from S3 bucket.
+
+Use Cron tool to identify incomplete uploads & delete those files
+
+All Incomplete uploads are automatically deleted every three months by Amazon S3
+0/1 point
+Explanation: A Amazon S3 Lifecycle rules can be configured to abort all multipart uploads which are failing to complete in a specific time period. For all files from size 5 MB to 5GB, multipart upload can be used. Option B will need additional manual efforts Option C is incur additional cost & admin work to use Cron tools. Option D is incorrect incomplete uploads are not automatically deleted.
+
+2-A database hosted in AWS is currently encountering an extended number of write operations and is not able to handle the load. What should be done to the architecture to ensure that the write operations are not lost under any circumstances?
+
+Add more IOPS to the existing EBS Volume used by the database
+
+Consider using DynamoDB instead of AWS RDS
+
+Use SQS FIFO to queue the database writes
+
+Use SNS to send notification on missed database writes and then add them manually at a later stage
+0/1 point
+Explanation : SQS Queues can be used to store the pending database writes, and these writes can then be added to the database. It is the perfect queuing system for such architecture. Note that adding more IOPS may help the situation but will not totally eliminate the chances of losing database writes.
+
+3-A Media firm is saving all its old videos in S3 Glacier Deep Archive. Due to shortage of new video footage, the channel has decided to reuse all these old videos. Since these are old videos, the channel is not sure of its popularity & response from users. Channel Head wants to make sure that these huge size files do not shoot up their budget & for this as an AWS consultant you advise them to use S3 intelligent storage class. The Operations Team is concerned for moving these files to S3 Intelligent-Tiering storage class. Which of the following actions can be taken to move objects in Amazon S3 Glacier Deep Archive to S3 Intelligent-Tiering storage class?
+
+Use Amazon S3 Console to copy these objects from S3 Glacier Deep Archive to required S3 Intelligent-Tiering storage class
+
+Use Amazon S3 Glacier Console to restore objects from S3 Glacier Deep Archive & then copy these objects to required S3 Intelligent-Tiering storage class.
+
+Use Amazon S3 console to restore objects from S3 Glacier Deep Archive & then copy these objects to required S3 Intelligent-Tiering storage class
+
+Use Amazon S3 Glacier console to copy these objects to the required S3 Intelligent-Tiering storage class
+0/1 point
+Explanation : To move objects from Glacier Deep Archive to different storage classes, first need to restore to original locations using Amazon S3 Glacier console & then use lifecycle policy to move objects to required S3 Intelligent-Tiering storage class Option A & D are incorrect as Objects in Glacier Deep Archive cannot be directly moved to another storage class. These need to be restored rst & then copied to desired storage class. Option C is incorrect as Amazon S3 console cannot be used to access these objects as these are Glacier objects.
+
+4-A large retail firm is saving its global sales reports in S3 bucket & are using S3 Lifecycle rules to move this data from Standard_IA storage class to AWS S3 Glacier post 180 days. Due to the financial year end, the Finance team is looking for a sales report for only Europe region where there is mismatch reported in sales figure. Which of the following is a recommended way to fetch this data with least efforts?
+
+Retrieve this data from Amazon Glacier to S3 bucket & use Amazon S3 select to query specific continent data using simple SQL
+
+Retrieve this data from Amazon Glacier to S3 bucket & use Amazon Athena to query specific continent data using SQL
+
+Use Amazon S3 Glacier Select to query specific continent data which is restored to S3 bucket from AWS S3 Glacier
+
+Use Amazon S3 Glacier Select to query specific continent data directly from Amazon S3 Glacier using simple SQL
+0/1 point
+Explanation : Amazon S3 Glacier Select can be used to query specific data from Amazon S3 Glacier instead of querying whole data. Amazon S3 Glacier Select can directly query data from Amazon S3 Glacier & restoration of data to S3 bucket is not required for querying this data. Data stored in Amazon S3 Glacier, it’s not necessary to restore data to S3 bucket. Data stored in Amazon S3 Glacier, it’s not necessary to restore data to S3 bucket. Also, Amazon Athena is an interactive query tool to analyze data with S3 bucket. Using Amazon S3 Glacier Select, there is no restore data in S3 bucket.
+
+5-A large educational institute is using Amazon S3 buckets to save data for its all graduation streams. During annual external audits from local government bodies, institutes need to fetch data of specific streams to get it audited from auditors. A large amount of data is saved in these S3 buckets which makes it cumbersome to download whole data & retrieve only a small amount of information from it. The IT Team is looking for your consultation for this issue without incurring additional cost or compromising on security. Which of the following actions is recommended for resolution?
+
+Store objects in CSV format compressing it with Snappy using server-side encryption. Use Amazon S3 Select to retrieve a subset of data
+
+Store objects in JSON format compressing it with GZIP using server-side encryption. Use Amazon S3 Select to retrieve a subset of data
+
+Store objects in Apache Parquet format compressing the whole object with GZIP using server-side encryption. Use Amazon S3 Select to retrieve a subset of data
+
+Store objects in CSV format compressing it with BZIP2 without any encryption. Use Amazon S3 Select to retrieve a subset of data
+0/1 point
+Explanation : Amazon S3 Select can be used to query a subset of data from the objects stored in the S3 bucket using simple SQL. For using this, objects need to be stored in an S3 bucket with CSV, JSON, or Apache Parquet format. GZIP & BZIP2 compression is supported with CSV or JSON format with server-side encryption With Amazon S3 Select, only GZIP & BZIP2 compression is supported with CSV format. Apache Parquet format with GZIP compression is not supported with S3 Select. Although Option D will work, saving objects in S3 without encryption will risk the security of objects.
+
+6-You manage the IT users for a large organization that is moving many services to AWS. You want a seamless way for your employees to log in and use cloud services. You also want to use AWS Managed Microsoft AD and have been asked if users will be able to access services in the on-premises environment. What would you respond?
+
+AWS Managed Microsoft AD requires data synchronization and replication to work properly
+
+AWS Managed Microsoft AD can only be used for cloud or on-premises environments, not both
+
+AWS Managed Microsoft AD can be used as the Active Directory over VPN or Direct Connect
+
+AWS Managed Microsoft AD is 100% the same as Active Directory running on separate EC2 instance
+0/1 point
+Explanation : You want to use AWS Managed Microsoft AD, you want to be certain that your users can use the AWS cloud resources as well as services in your onpremise environment. In order to make your company have connectivity for AWS services, once you implement VPN or Direct Connect, your AWS Managed Microsoft AD can be used for both cloud services and on-premises services. When data can be synchronized from on-premises to the cloud, it is not required. AWS Managed Microsoft AD can be used for both, it’s not one or the other.AWS Managed Microsoft AD. being a managed service limits some capabilities versus running Active Directory by itself on EC2 instances
