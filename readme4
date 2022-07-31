@@ -1,0 +1,35 @@
+1-A company has a legacy application that processes data in two parts. The second part of the process takes longer than the first, so the company has decided to rewrite the application as two microservices running on Amazon ECS that can scale independently.
+How should a solutions architect integrate the microservices?
+A. Implement code in microservice 1 to send data to an Amazon S3 bucket. Use S3 event
+notifications to invoke microservice 2.
+B. Implement code in microservice 1 to publish data to an Amazon SNS topic. Implement code in
+microservice 2 to subscribe to this topic.
+C. Implement code in microservice 1 to send data to Amazon Kinesis Data Firehose. Implement
+code in microservice 2 to read from Kinesis Data Firehose.
+D. Implement code in microservice 1 to send data to an Amazon SQS queue. Implement code in
+microservice 2 to process messages from the queue. 
+ Answer: D 
+ 
+ 2-A company captures clickstream data from multiple websites and analyzes it using batch processing.
+The data is loaded nightly into Amazon Redshift and is consumed by business analysts. The
+company wants to move towards near-real-time data processing for timely insights. The solution
+should process the streaming data with minimal effort and operational overhead.
+Which combination of AWS services are MOST cost-effective for this solution? (Choose two.)
+A. Amazon EC2
+B. AWS Lambda
+C. Amazon Kinesis Data Streams
+D. Amazon Kinesis Data Firehose
+E. Amazon Kinesis Data Analytics
+Answer: B, D
+Explanation:
+Kinesis Data Streams and Kinesis Client Library (KCL) – Data from the data source can be continuously captured and streamed in near real-time using Kinesis Data Streams. With the Kinesis Client Library (KCL), you can build your own application that can preprocess the streaming data as they arrive and emit the data for generating incremental views and downstream analysis. Kinesis Data Analytics – This service provides the easiest way to process the data that is streaming through Kinesis Data Stream or Kinesis Data Firehose using SQL. This enables customers to gain actionable insight in near real-time from the incremental stream before storing it in Amazon S3.
+Amazon Kinesis Data Firehose
+√ Near-real-time
+√ Loads to Amazon Redshift
+√ Works well with clickstreams
+√ Minimal effort & operational overhead.
+
+AWS Lambda
+√ Works with Kinesis Firehose to transform data.
+√ The company already uses batch processing.
+√ Minimal effort & operational overhead.
